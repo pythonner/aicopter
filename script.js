@@ -12,35 +12,35 @@ var jsCopter = {
     // object : default options, can be overwritten by init call
     options : {
         canvas : {
-            width : 500,
-            height : 300,
-            refreshRate : 20
+            width : 800,
+            height : 500,
+            refreshRate : 15
         },
         copter : {
-            width : 30,
-            height : 15,
+            width : 62,
+            height : 47,
             topSpeed : 5,                   // max speed
-            acceleration : 0.15,            // how much to increase the speed by each time the game refreshes and the button is held down
-            img : null                      // optional copter image path, relative to the html page
+            acceleration : 0.25,            // how much to increase the speed by each time the game refreshes and the button is held down
+            img : "helicopter.png"          // optional copter image path, relative to the html page
         },
         physics : {
-            terminalVelocity : 4,           // max speed
+            terminalVelocity : 5,           // max speed
             gravity : 0.5,
             friction : 0.8
         },
         walls : {
-            separation : 19,                //fudge
+            separation : 19,                // fudge
             width : 20,
             step : 5,                       // potential height difference for each new wall
             startHeight : 60,
-            maxHeight : 120,
+            maxHeight : 60,
             heightIncreaseInterval : 5,     // how often to increase the height of each wall (from start to max)
-            heightIncreaseStep : 10         // how much to increase the height of each wall by
+            heightIncreaseStep : 0          // how much to increase the height of each wall by
         },
         obstacles : {
-            separation : 250,               // frequency of obstacles
-            width : 20,
-            height : 50
+            separation : 750,               // frequency of obstacles
+            width : 30,
+            height : 10
         },
         colours : {
             bg : "#000000",
@@ -52,7 +52,7 @@ var jsCopter = {
     // object : the game elements
     gameData : {
         copter : {
-            x : 20,
+            x : 30,
             y : 0,
             speed : 0,
             rotation : 0
@@ -67,8 +67,12 @@ var jsCopter = {
         obstacles : {
             counter : 0,
             current : []
-        }
+        },
+        questionCounter : 0
     },
+
+    // image
+    copterImg: new Image(),
 
     // object : scores - ints and html objects
     scores : {
@@ -99,9 +103,8 @@ var jsCopter = {
     // bool : is the game currently running?
     gameRunning : false,
 
-    // object : to contain the death text. when you die.
-    deathText : null,
-
+    // object : to contain the end text. when you die or win.
+    endText : null,
 
     /**
      * start the JS Copter process
@@ -124,6 +127,9 @@ var jsCopter = {
                 this.options[optionType][subOption] = options[optionType][subOption];
             }
         };
+
+        // Load image
+        this.copterImg.src = this.options.copter.img;
 
         // Create a canvas element
         this.canvas = this.createCanvas(canvasId);
@@ -186,8 +192,13 @@ var jsCopter = {
         draw.clearRect(0,0,this.options.canvas.width, this.options.canvas.height);
         draw.beginPath();
         this.roundedRect(draw, 0, 0, this.options.canvas.width, this.options.canvas.height, 10);
-        draw.fillStyle = this.options.colours.bg;
-        draw.fill();
+
+        var img = new Image();
+        img.src = 'rock.jpg';
+        var pattern = draw.createPattern(img, 'repeat');
+        draw.fillStyle = pattern;
+        draw.fillRect(0,0, 800, 500);
+
     },
 
 
@@ -195,6 +206,9 @@ var jsCopter = {
      * Reset game data
      */
     resetGameData: function() {
+
+        // reset question counter
+        this.gameData.questionCounter = 0;
 
         // reset current score
         this.scores.current = this.scores.elements.current.innerHTML = 0;
@@ -217,9 +231,9 @@ var jsCopter = {
         // remove all walls
         this.gameData.walls.current.length = 0;
 
-        // reset death text
-        if (!!this.deathText) {
-            this.deathText.style.display = "none";
+        // reset end text
+        if (!!this.endText) {
+            this.endText.style.display = "none";
         }
 
         // create initial floor and ceiling
@@ -257,25 +271,11 @@ var jsCopter = {
         // create and position copter element
         draw.save();
         draw.translate(this.gameData.copter.x, this.gameData.copter.y);
-        draw.rotate(this.gameData.copter.rotation);
+        //draw.rotate(this.gameData.copter.rotation);
 
         // condition : if an image is specified, use it
         if (this.options.copter.img) {
-
-            // save 'this' context
-            var that = this;
-
-            // create copter element
-            var copter = new Image();
-            copter.src = that.options.copter.img;
-
-            // when image has loaded
-            copter.onload = function() {
-                draw.drawImage(copter, that.gameData.copter.x, that.gameData.copter.y, copter.width, copter.height);
-                that.options.copter.width = copter.width;
-                that.options.copter.height = copter.height;
-            }
-
+            draw.drawImage(this.copterImg, 0, 0);
         // no image set, use a block
         } else {
             draw.beginPath();
@@ -416,7 +416,7 @@ var jsCopter = {
         var impact = this.checkForImpact();
 
         // condition : check for an impact
-        if (impact === false) {
+        if (impact === 0) {
 
             // update graphics
             this.createBG();
@@ -429,7 +429,7 @@ var jsCopter = {
 
         // condition : an impact has occurred, end the game
         } else {
-            this.endGame();
+            this.endGame(impact);
         }
     },
 
@@ -447,15 +447,13 @@ var jsCopter = {
 
                 // only check the current obstacle if it overlaps horizontally with the copter
                 if(
-                    this.gameData.obstacles.current[x].x >=this.gameData.copter.x &&
-                    this.gameData.obstacles.current[x].x <= (this.gameData.copter.x+this.options.obstacles.width)
-                ) {
-                    // condition : check for impacts on obstacles in range
-                    if (
-                        this.gameData.copter.y >= this.gameData.obstacles.current[x].y &&
-                        this.gameData.copter.y <= (this.gameData.obstacles.current[x].y + this.options.obstacles.height)
-                    ) {
-                        return true;
+                    this.gameData.obstacles.current[x].x == this.gameData.copter.x) {
+                    // condition : check if the copter is in the good answer zone (to get points!)
+                    var impactQuestion = secretVariable.questions[this.gameData.obstacles.current[x].question]
+
+                    if (((md5(impactQuestion.label2) == impactQuestion.correct) && this.gameData.copter.y > (this.gameData.obstacles.current[x].y + this.options.obstacles.height)) ||
+                        ((md5(impactQuestion.label1) == impactQuestion.correct) && (this.gameData.copter.y + this.options.copter.height) < this.gameData.obstacles.current[x].y)) {
+                        this.scores.current++;
                     }
                 }
             }
@@ -477,18 +475,18 @@ var jsCopter = {
                         this.gameData.copter.y > (this.options.canvas.height - this.options.copter.height - (this.gameData.walls.current[i].y-this.gameData.walls.current[i].height)) // bottom
                     )
                 ) {
-                    return true;
+                    return 1;
                 }
             }
         }
 
         // condition : final impact check - if somehow the copter has gone off screen, above or below
         if (this.gameData.copter.y < 0 || this.gameData.copter.y > (this.options.canvas.height - this.options.copter.height)) {
-            return true;
+            return 1;
         }
 
         // no impact detected
-        return false;
+        return 0;
     },
 
 
@@ -541,32 +539,29 @@ var jsCopter = {
             // get previous wall height
             var previousHeight = this.gameData.walls.current[this.gameData.walls.current.length-1].height;
 
-            // random decision, whether to increase or decrease the height (either 0 or 1)
-            var plusMinus = Math.round(Math.random());
-
-            // throw in the occasional bigger jump in wall positioning...
-            var bigOne = Math.round(Math.random()*10);
+            // random decision, whether to increase, decrease or keep the same height
+            var plusMinus = Math.round(Math.random(3));
 
             // set variable that will contain new height
             var newHeight;
 
             // condition : calculate the new height
-            if (bigOne == 10) {
-                newHeight = this.gameData.walls.currentHeight/2;
+            if (plusMinus == 0) {
+                newHeight = previousHeight + 1;
             } else if (plusMinus == 1) {
-                newHeight = previousHeight + Math.floor(Math.random()*this.gameData.walls.currentStep);
+                newHeight = previousHeight - 1;
             } else {
-                newHeight = previousHeight - Math.floor(Math.random()*this.gameData.walls.currentStep);
+                newHeight = previousHeight;
             }
 
             // condition : stop the height going too...high
             if (newHeight > this.gameData.walls.currentHeight) {
-                newHeight = this.gameData.walls.currentHeight - this.gameData.walls.currentStep;
+                newHeight = this.gameData.walls.currentHeight;
             }
 
             // condition : stop the height going too...low
             if (newHeight < 0) {
-                newHeight = this.gameData.walls.currentStep;
+                newHeight = 0;
             }
 
             // generate values for the new wall
@@ -621,34 +616,40 @@ var jsCopter = {
         // condition : if the separation (between obstacles) has been reached, create a new obstacle
         if (this.gameData.obstacles.counter++ >= Math.floor(this.options.obstacles.separation/this.options.copter.topSpeed)) {
 
-            // condition : increase the current height of the walls every x number of times
-            if (
-                    this.gameData.walls.currentHeight <= this.options.walls.maxHeight &&
-                    this.options.walls.heightIncreaseInterval > 0 &&
-                    (this.gameData.walls.heightIncreaseInterval++ == this.options.walls.heightIncreaseInterval)
-            ) {
+            // winning situation
+            if (this.gameData.questionCounter == secretVariable.questions.length) {
+                this.endGame(2);
+            } else {
+                // condition : increase the current height of the walls every x number of times
+                if (
+                        this.gameData.walls.currentHeight <= this.options.walls.maxHeight &&
+                        this.options.walls.heightIncreaseInterval > 0 &&
+                        (this.gameData.walls.heightIncreaseInterval++ == this.options.walls.heightIncreaseInterval)
+                ) {
 
-                // increase the potential height of each wall
-                this.gameData.walls.currentHeight += this.options.walls.heightIncreaseStep;
+                    // increase the potential height of each wall
+                    this.gameData.walls.currentHeight += this.options.walls.heightIncreaseStep;
 
-                // increase slightly the potential height difference between each wall
-                this.gameData.walls.currentStep++;
+                    // increase slightly the potential height difference between each wall
+                    this.gameData.walls.currentStep++;
 
-                // reset counter
-                this.gameData.walls.heightIncreaseInterval = 0;
+                    // reset counter
+                    this.gameData.walls.heightIncreaseInterval = 0;
+                }
+
+                // generate values for the new obstacle
+                var newObstacle = {
+                    x: this.options.canvas.width,
+                    y: Math.floor(Math.random() * this.options.canvas.height/3 + this.options.canvas.height/3),
+                    question : this.gameData.questionCounter++
+                }
+
+                // add obstacle to the array
+                this.gameData.obstacles.current.push(newObstacle);
+
+                // reset obstacle separation counter
+                this.gameData.obstacles.counter = 0;
             }
-
-            // generate values for the new obstacle
-            var newObstacle = {
-                x: this.options.canvas.width,
-                y: Math.floor((Math.random() * (this.options.canvas.height - (2*this.gameData.walls.currentHeight))) + (this.gameData.walls.currentHeight/2))
-            }
-
-            // add obstacle to the array
-            this.gameData.obstacles.current.push(newObstacle);
-
-            // reset obstacle separation counter
-            this.gameData.obstacles.counter = 0;
         }
 
         // draw every obstacle in the array
@@ -660,9 +661,14 @@ var jsCopter = {
             draw.fill();
 
             // condition : if the last obstacle in the array has disappeared off screen, remove it
-            if (this.gameData.obstacles.current[i].x <= - (this.options.canvas.width)) {
+            if (this.gameData.obstacles.current[i].x <= 0) {
                 this.gameData.obstacles.current.splice(i, 1);
             }
+
+            draw.font = "30px Arial";
+            draw.fillText(secretVariable.questions[this.gameData.obstacles.current[i].question].label1,this.gameData.obstacles.current[i].x, this.gameData.obstacles.current[i].y+30-this.options.canvas.height/6);
+            draw.fillText(secretVariable.questions[this.gameData.obstacles.current[i].question].label2,this.gameData.obstacles.current[i].x, this.gameData.obstacles.current[i].y+this.options.obstacles.height+this.options.canvas.height/6);
+
         }
     },
 
@@ -673,7 +679,6 @@ var jsCopter = {
     updateScore: function() {
         this.scores.halfStep = (this.scores.halfStep == 0) ? 1 : 0;
         if (this.scores.halfStep == 1) {
-            this.scores.current++;
             this.scores.elements.current.innerHTML = this.scores.current;
         }
     },
@@ -682,7 +687,7 @@ var jsCopter = {
     /*
      * Function to call when the game has come to an end
      */
-    endGame: function() {
+    endGame: function(impact) {
 
         // condition : if the current score is higher than the top score, set it
         if (this.scores.current > this.scores.top) {
@@ -696,16 +701,33 @@ var jsCopter = {
             }
         }
 
-        // condition : create death text ?
-        if (!this.deathText) {
-            this.deathText = document.createElement("p");
-            this.deathText.id = "deathtext";
-            var deathTextText = document.createTextNode("CRASH!");
-            this.deathText.appendChild(deathTextText);
-            this.container.appendChild(this.deathText);
-        } else {
-            this.deathText.style.display = "block";
+        // condition : create end text ?
+        var message = ""
+
+        this.endText = document.createElement("p");
+        this.endText.id = "endtext";
+        if (impact == 1) {
+            message = "I crashed the AIcopter and got a score of " + this.scores.current + "/" + secretVariable.questions.length + "! "
+            this.endText.appendChild(document.createTextNode(message));
+        } else if (impact == 2) {
+            message = "I drove the AIcopter to the end and got a score of " + this.scores.current + "/" + secretVariable.questions.length + "! "
+            this.endText.appendChild(document.createTextNode(message));
         }
+
+        var tweetThis = document.createElement("a");
+        tweetThis.setAttribute("href", "https://twitter.com/intent/tweet?text=" + message + " http://aicopter.com #aicopter");
+        tweetThis.setAttribute("class", "twitter-share-button");
+        tweetThis.setAttribute("id", "tweetButton");
+
+        this.endText.appendChild(tweetThis);
+        this.container.appendChild(this.endText);
+
+          // dynamically bind this tweet bnutton
+        twttr.widgets.load(
+            document.getElementById("tweetButton")
+        );
+
+        this.endText.style.display = "block";
 
         // stop the interval
         clearInterval(this.canvasInterval);
@@ -723,5 +745,6 @@ var jsCopter = {
     ucFirst: function(textString) {
         //return textString.substr(0,1).toUpperCase() + textString.substr(1,textString.length);
         return textString;
-    }
+    },
+
 }

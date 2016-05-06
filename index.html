@@ -1,32 +1,30 @@
 <html>
     <head>
-        <title>JS Canvas Copter</title>
+        <title>AICopter</title>
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
 
+        <h1>AICopter</h1>
+        <h2>Fly the copter through 50 term pairs. Fly over the term related to Machine Learning and AI to get points. </h2>
+        <h3>Avoid the walls!</h3>
+
         <div id="jscopter-container"></div>
 
-        <p id="customisable-link"><a href="./customisable/">See customisable version</a></p>
-
-        <script src="cookies.js"></script>
-        <script src="script.js"></script>
+        <p id="fineprint">Helicopter game by <a href="https://github.com/thegingerbloke/js-canvas-copter">Pete Goodman</a></p>
+        <p id="fineprint">Helicopter image from <a href ="http://www.fileformat.info/info/emoji/helicopter/index.htm">FileFormat.info</a></p>
+        <p id="fineprint">Background pattern from <a href="http://www.designbolts.com/2012/11/26/25-free-simple-black-seamless-patterns-for-website-backgrounds/">DesignBolts</a></p>
+        
+        
+        <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
+        <script type="text/javascript" src="md5.js"></script>
+        <script type="text/javascript" src="not-the-questions.js"></script>
+        <script type="text/javascript" src="cookies.js"></script>
+        <script type="text/javascript" src="script.js"></script>
         <script>
-            var options = {
-                copter : {
-                    height : 15,
-                    width : 30
-                },
-                canvas : {
-                    height : 300,
-                    width : 500,
-                    refreshRate : 20
-                }
-            };
-
-            jsCopter.init("jscopter", "jscopter-container", options);
+            jsCopter.init("jscopter", "jscopter-container", {});
         </script>
-        <script src="http://thegingerbloke.github.io/lab-badge/lab-badge.min.js"></script>
+
     </body>
 </html>

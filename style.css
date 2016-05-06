@@ -12,8 +12,8 @@ p#customisable-link {
 #jscopter-container {
     position: relative;
     margin: 2em;
-    width: 500px;
-    height: 300px;
+    width: 800px;
+    height: 500px;
 }
 
 #currentscorecontainer {
@@ -31,7 +31,7 @@ p#customisable-link {
     color:#fff;
 }
 
-#deathtext {
+#endtext {
     position:absolute;
     left : 0px;
     bottom: 0px;
@@ -39,5 +39,15 @@ p#customisable-link {
     color:#fff;
     font-weight:bold;
     font-family:Georgia, Arial, sans-serif;
-    font-size : 1.8em;
+    font-size : 1.4em;
+}
+
+#fineprint {
+    left : 0px;
+    bottom: 0px;
+    margin: 0;
+    color:#222;
+    font-weight:bold;
+    font-family:Georgia, Arial, sans-serif;
+    font-size : 0.8em;
 }
