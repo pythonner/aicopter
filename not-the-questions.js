@@ -77,7 +77,7 @@ var secretVariable = {
         },
         {
             label1 : "Genetic algorithm", 
-            label2 : "Genetic engineering", 
+            label2 : "Generic engineering", 
             correct : "7169b3c688b0af1fc8a460deaad6df3d"
         },
         {
@@ -101,12 +101,12 @@ var secretVariable = {
             correct : "f694b9200da21d4baed32619004b3ac0"
         },
         {
-            label1 : "Las Vegas", 
-            label2 : "Monte Carlo", 
-            correct : "bd252a07287728930fd4a0849c16f60b"
+            label1 : "Montebello Search", 
+            label2 : "Monte Carlo Search", 
+            correct : "4480e2a4df497004cb4d429528d95c8b"
         },
         {
-            label1 : "Null-training", 
+            label1 : "Co-working", 
             label2 : "Co-training", 
             correct : "6de994b40735bf6641b9ff9c9a25f394"
         },
@@ -127,7 +127,7 @@ var secretVariable = {
         },
         {
             label1 : "Expectation-maximization", 
-            label2 : "Normal-expectation", 
+            label2 : "No expectations", 
             correct : "0113c2ca8f7f7d0565d76421af24e5ae"
         },
         {
@@ -151,7 +151,7 @@ var secretVariable = {
             correct : "7c0b4cda5940200c71bad833e991a7f4"
         },
         {
-            label1 : "Corrective-kernel SVM", 
+            label1 : "Corrective-kernel ABC", 
             label2 : "Polynomial-kernel SVM", 
             correct : "f9be8028c5dd6b8147e02ee2f9cfba7c"
         },
@@ -172,7 +172,7 @@ var secretVariable = {
         },
         {
             label1 : "Geoffrey Hinton", 
-            label2 : "Geoffrey Hilton", 
+            label2 : "Conrad Hilton", 
             correct : "661307eb105b64a2a3d7d9a9092d6574"
         },
         {
@@ -187,7 +187,7 @@ var secretVariable = {
         },
         {
             label1 : "Multivariate analysis", 
-            label2 : "Multiverse analysis", 
+            label2 : "Multiverse repo", 
             correct : "6df95a0cf98de3dea25fa798508091ea"
         },
         {
@@ -206,7 +206,7 @@ var secretVariable = {
             correct : "a6a2067a60ac93059eacadbb1055446b"
         },
         {
-            label1 : "BLACK score", 
+            label1 : "WHITE score", 
             label2 : "BLEU score", 
             correct : "df9cdfdba2bafa1c36324b95fbf0ad89"
         },
@@ -216,7 +216,7 @@ var secretVariable = {
             correct : "ec9b8f63f5ee774a2ebc30d1ee3b595d"
         },
         {
-            label1 : "Pairwise information lost", 
+            label1 : "Online misinformation", 
             label2 : "Pointwise mutual information", 
             correct : "1f96f86dc740c4791be450b39d3e96ce"
         },
@@ -232,7 +232,7 @@ var secretVariable = {
         },
         {
             label1 : "Laplacian Smoothing", 
-            label2 : "Laplacian Shooting", 
+            label2 : "Bonaparte Smoothing", 
             correct : "5e8152b181761889a89d2c3a5e2838c4"
         },
         {
