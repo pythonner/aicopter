@@ -18,12 +18,12 @@ var secretVariable = {
         {
             label1 : "Chompy Mage grammars", 
             label2 : "Chomsky grammars", 
-            correct : "2"
+            correct : "91d7372c3deddc40ac381bffde6d2763"
         },
         {
             label1 : "Fsa-id", 
             label2 : "Tf-idf", 
-            correct : "9060ebb39fa2f929f99123d8f1b2713d"
+            correct : "3e9cbd6db5c7345a21c463d8e9694382"
         },
         {
             label1 : "Neural Networks", 
