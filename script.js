@@ -715,7 +715,7 @@ var jsCopter = {
         }
 
         var tweetThis = document.createElement("a");
-        tweetThis.setAttribute("href", "https://twitter.com/intent/tweet?text=" + message + " http://aicopter.com #aicopter");
+        tweetThis.setAttribute("href", "https://twitter.com/intent/tweet?text=" + message + " #aicopter");
         tweetThis.setAttribute("class", "twitter-share-button");
         tweetThis.setAttribute("id", "tweetButton");
 
