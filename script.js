@@ -707,10 +707,10 @@ var jsCopter = {
         this.endText = document.createElement("p");
         this.endText.id = "endtext";
         if (impact == 1) {
-            message = "I crashed the AIcopter and got a score of " + this.scores.current + "/" + secretVariable.questions.length + "! "
+            message = "I crashed the AIcopter and got a score of " + this.scores.current + "/" + (secretVariable.questions.length-1) + "! "
             this.endText.appendChild(document.createTextNode(message));
         } else if (impact == 2) {
-            message = "I drove the AIcopter to the end and got a score of " + this.scores.current + "/" + secretVariable.questions.length + "! "
+            message = "I drove the AIcopter to the end and got a score of " + this.scores.current + "/" + (secretVariable.questions.length-1) + "! "
             this.endText.appendChild(document.createTextNode(message));
         }
 
