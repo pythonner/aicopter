@@ -122,18 +122,15 @@ var jsCopter = {
 
         if (!this.container) return false;
 
-        // #jscopter-container {
-        //  position: relative;
-        //  margin: 2em;
-        //  width: 800px;
-        //  height: 500px;
-        // }
-
         this.container.style.position = "relative";
         this.container.style.margin = "2em";
-        this.container.style.width = this.options.canvas.width+"px";
-        this.container.style.height = this.options.canvas.height+"px";
+        this.setCanvasSize();
 
+        // detect orientation change
+        var that = this;
+        window.orientationchange = function(event) {
+            that.setCanvasSize();
+        }
 
         // set the options
         for (var optionType in options) {
@@ -169,8 +166,15 @@ var jsCopter = {
         // set a mouse and touch listener to start the game
         this.initMouseListener();
         this.initTouchListener();
+
     },
 
+    setCanvasSize: function() {
+        this.options.canvas.width = Math.min(window.innerWidth - 80, 1000);
+        this.options.canvas.height = Math.min(window.innerHeight - 20, 600);
+        this.container.style.width = this.options.canvas.width+"px";
+        this.container.style.height = this.options.canvas.height+"px";
+    },
 
     /*
      * create a canvas element of specific size
