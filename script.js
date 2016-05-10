@@ -119,7 +119,21 @@ var jsCopter = {
 
         // search for parent element - if not found, stop now
         this.container = document.getElementById(parentId);
+
         if (!this.container) return false;
+
+        // #jscopter-container {
+        //  position: relative;
+        //  margin: 2em;
+        //  width: 800px;
+        //  height: 500px;
+        // }
+
+        this.container.style.position = "relative";
+        this.container.style.margin = "2em";
+        this.container.style.width = this.options.canvas.width+"px";
+        this.container.style.height = this.options.canvas.height+"px";
+
 
         // set the options
         for (var optionType in options) {
@@ -198,7 +212,7 @@ var jsCopter = {
         img.src = 'rock.jpg';
         var pattern = draw.createPattern(img, 'repeat');
         draw.fillStyle = pattern;
-        draw.fillRect(0,0, 800, 500);
+        draw.fillRect(0,0, this.options.canvas.width, this.options.canvas.height);
 
     },
 

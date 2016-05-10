@@ -9,13 +9,6 @@ p#customisable-link {
     margin: 2em;
 }
 
-#jscopter-container {
-    position: relative;
-    margin: 2em;
-    width: 800px;
-    height: 500px;
-}
-
 #currentscorecontainer {
     position:absolute;
     top: -10px;
