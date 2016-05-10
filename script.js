@@ -126,12 +126,6 @@ var jsCopter = {
         this.container.style.margin = "2em";
         this.setCanvasSize();
 
-        // detect orientation change
-        var that = this;
-        window.orientationchange = function(event) {
-            that.setCanvasSize();
-        }
-
         // set the options
         for (var optionType in options) {
             for (var subOption in options[optionType]) {
@@ -687,7 +681,8 @@ var jsCopter = {
 
                 // generate values for the new obstacle
                 var newObstacle = {
-                    x: this.options.canvas.width,
+                    //  making sure copter and obstacle can collide on a given topSpeed decrement
+                    x: this.options.canvas.width - (this.options.canvas.width % this.options.copter.topSpeed),
                     y: Math.floor(Math.random() * this.options.canvas.height/3 + this.options.canvas.height/3),
                     question : this.gameData.questionCounter++
                 }
