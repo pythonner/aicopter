@@ -152,8 +152,9 @@ var jsCopter = {
         // create initial floor & ceiling
         this.createInitialWalls();
 
-        // set a mouse listener to start the game
+        // set a mouse and touch listener to start the game
         this.initMouseListener();
+        this.initTouchListener();
     },
 
 
@@ -388,6 +389,35 @@ var jsCopter = {
         }
     },
 
+    /**
+     * Initialise the touch listener, to detect when the canvas is touched
+     */
+    initTouchListener: function(){
+
+        // save 'this' state
+        var that = this;
+
+        // detect touch press
+        document.ontouchstart = function(event) {
+
+            // condition : if mouse press is over the canvas element
+            if (event.target.id == that.canvas.id) {
+
+                // tells the game
+                that.mouseDown = true;
+
+                // condition : if the game is not currently running, start it
+                if (that.gameRunning === false) {
+                    that.startGame();
+                }
+            }
+        }
+
+        // detect touch release
+        document.ontouchend = function(event) {
+            that.mouseDown = false;
+        }
+    },
 
 
     /*
