@@ -21,7 +21,7 @@ var jsCopter = {
             height : 47,
             topSpeed : 5,                   // max speed
             acceleration : 0.25,            // how much to increase the speed by each time the game refreshes and the button is held down
-            img : "helicopter.png"          // optional copter image path, relative to the html page
+            img : "images/helicopter.png"          // optional copter image path, relative to the html page
         },
         physics : {
             terminalVelocity : 5,           // max speed
@@ -207,7 +207,7 @@ var jsCopter = {
         this.roundedRect(draw, 0, 0, this.options.canvas.width, this.options.canvas.height, 10);
 
         var img = new Image();
-        img.src = 'rock.jpg';
+        img.src = 'images/rock.jpg';
         var pattern = draw.createPattern(img, 'repeat');
         draw.fillStyle = pattern;
         draw.fillRect(0,0, this.options.canvas.width, this.options.canvas.height);
@@ -736,6 +736,7 @@ var jsCopter = {
         if (this.scores.current > this.scores.top) {
 
             // set the top score
+            this.scores.top = this.scores.current;
             this.scores.elements.top.innerHTML = this.scores.current;
 
             // set cookie containing the top score
@@ -744,23 +745,16 @@ var jsCopter = {
             }
         }
 
-        // condition : create end text ?
-        var message = ""
-
         this.endText = document.createElement("p");
         this.endText.id = "endtext";
-        if (impact == 1) {
-            message = "I crashed the AIcopter and got a score of " + this.scores.current + "/" + (secretVariable.questions.length-1) + "! "
-            this.endText.appendChild(document.createTextNode(message));
-        } else if (impact == 2) {
-            message = "I drove the AIcopter to the end and got a score of " + this.scores.current + "/" + (secretVariable.questions.length-1) + "! "
-            this.endText.appendChild(document.createTextNode(message));
-        }
+        var message = "I drove the AIcopter and got a score of " + this.scores.top + "/" + (secretVariable.questions.length-1) + "! ";
+        this.endText.appendChild(document.createTextNode(message));
 
         var tweetThis = document.createElement("a");
-        tweetThis.setAttribute("href", "https://twitter.com/intent/tweet?text=" + message + " #aicopter");
+        tweetThis.setAttribute("href", "https://twitter.com/intent/tweet?text=" + message + "http://aicopter.com #machinelearning #ai");
         tweetThis.setAttribute("class", "twitter-share-button");
         tweetThis.setAttribute("id", "tweetButton");
+        tweetThis.setAttribute("data-size", "large");
 
         this.endText.appendChild(tweetThis);
         this.container.appendChild(this.endText);

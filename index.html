@@ -1,30 +1,242 @@
-<html>
-    <head>
-        <title>AICopter</title>
-        <link rel="stylesheet" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no"/>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/jquery.fancybox.css"/>
+  <link rel="stylesheet" href="css/contact-form.css"/>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery-migrate-1.2.1.js"></script>
+  <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
+  <script type="text/javascript" src="js/md5.js"></script>
+  <script type="text/javascript" src="js/not-the-questions.js"></script>
+  <script type="text/javascript" src="js/cookies.js"></script>
+  <script type="text/javascript" src="js/copter.js"></script>
+  <!--[if lt IE 9]>
+  <html class="lt-ie9">
+  <div style=' clear: both; text-align:center; position: relative;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/..">
+      <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
+    </a>
+  </div>
+  <script src="js/html5shiv.js"></script>
+  <![endif]-->
 
-        <h1>The AICopter</h1>
-        <h2>Fly the copter through 50 gates. At each gate, fly over the term related to Machine Learning and AI to get points. </h2>
-        <h3>(Tip: avoid the walls!)</h3>
+  <script src='js/device.min.js'></script>
+</head>
 
-        <div id="jscopter-container"></div>
+<body>
+<div class="page">
+  <!--========================================================
+                            HEADER
+  =========================================================-->
+  <header id="home">
+    <div class="coverrr">
+      <div class="container">
+        <div class="brand">
+          <img src="images/logo.png" height="42" alt=""/>
 
-        <p id="fineprint">Helicopter game by <a href="https://github.com/thegingerbloke/js-canvas-copter">Pete Goodman</a></p>
-        <p id="fineprint">Helicopter image from <a href ="http://www.fileformat.info/info/emoji/helicopter/index.htm">FileFormat.info</a></p>
-        <p id="fineprint">Background pattern from <a href="http://www.designbolts.com/2012/11/26/25-free-simple-black-seamless-patterns-for-website-backgrounds/">DesignBolts</a></p>
-        
-        
-        <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
-        <script type="text/javascript" src="md5.js"></script>
-        <script type="text/javascript" src="not-the-questions.js"></script>
-        <script type="text/javascript" src="cookies.js"></script>
-        <script type="text/javascript" src="copter.js"></script>
-        <script>
-            jsCopter.init("jscopter", "jscopter-container", {});
-        </script>
+          <h1 class="brand_name">
+            <a href="./">AICopter <span>Innodata Labs &bull; recruiting</span></a>
+          </h1>
+          <a href="#work">→ see openings</a>
+        </div>
 
-    </body>
+
+        <a class="sf-menu-toggle fa fa-bars" href="#"></a>
+        <nav class="nav">
+          <ul class="sf-menu">
+            <li class="active">
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#play">Play</a>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#work">Work with us</a>
+            </li>
+            <li>
+              <a href="#contacts">Contacts</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  </header>
+  <!--========================================================
+                            CONTENT
+  =========================================================-->
+  <main>
+    <section id="play" class="parallax parallax1" data-parallax-speed="-0.2">
+      <div class="container">
+        <div class="row">
+          <div class="grid_10 preffix_1">
+            <hr/>
+            <h2>Play</h2>
+
+            <p class="center">
+              Fly the copter through 50 gates. At each gate, fly over the term related to Machine Learning and AI to get points.
+              <br/>
+              (Tip: avoid the walls!)
+            </p>
+
+            <div id="jscopter-container"></div>
+
+
+            <script>
+                jsCopter.init("jscopter", "jscopter-container", {});
+            </script>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="parallax parallax3" data-parallax-speed="-0.2">
+      <div class="container">
+        <hr/>
+        <h2>Work with us!</h2>
+
+        <div class="row off1 center">
+          <div class="grid_4">
+            <div class="image-wrap">
+              <div class="lazy-img" style="padding-bottom:100%;">
+                <img data-src="images/tensorflow-logo.jpg" src="#" alt=""/>
+              </div>
+            </div>
+            <h3>
+              TensorFLow on Hadoop! <sup>1,2</sup>
+            </h3>
+            <p>Does it sound like an exciting adventure? We have extensive knowledge in Machine Learning and Big Data. Do you?</p>
+          </div>
+          <div class="grid_4">
+            <div class="image-wrap">
+              <div class="lazy-img" style="padding-bottom:100%;">
+                <img data-src="images/culture.jpg" src="#" alt=""/>
+              </div>
+            </div>
+            <h3>
+              Company Cuture
+            </h3>
+            <p><a href="https://twitter.com/MapMove/status/727645595708600320">"It's never stressful, hard or boring when you work with the right people."</a> Be part of the founding team, influence software design and direction right at the beginnning... be the culture!</p>
+          </div>
+          <div class="grid_4">
+
+            <h3>
+              Apply Now!
+              <br/>
+              * * *
+            </h3>
+            <p>
+                
+            <script src='https://www.workable.com/assets/embed.js' type='text/javascript'></script>
+            <script type='text/javascript' charset='utf-8'>
+            whr(document).ready(function(){
+            whr_embed(102270, {detail: 'titles', base: 'jobs', zoom: 'country', grouping: 'none'});
+            });
+            </script>
+            <div id="whr_embed_hook"></div>
+
+
+            </p>
+          </div>
+        </div>
+        <p class="copyright">
+            <sup>[1]</sup> TensorFlow, the TensorFlow logo and any related marks are trademarks of Google Inc.
+            <br/>
+            <sup>[2]</sup> Hadoop® and any related marks are trademarks of the Apache Software Foundation.
+        </p>
+      </div>
+    </section>
+
+    <section id="about" class="parallax parallax2" data-parallax-speed="-0.2">
+      <div class="container">
+        <hr/>
+        <h2>About</h2>
+
+        <div class="row">
+          <div class="grid_4">
+            <h3>
+              Innodata
+            </h3>
+            <p><a href="http://innodata.com/">Innodata</a> (NASDAQ: INOD) is a leading services company providing content solutions, data analytics and related services to publishers, information providers, and enterprises.</p>
+            <p>In response to market demand for transformation from print publishing to online publishing and from search-based information products to workflow-based information products, we are continuously adopting new strategies, technologies and processes.</p>
+          </div>
+          <div class="grid_4">
+            <h3>
+              Innodata Labs
+            </h3>
+            <p>Innodata Labs is our research arm based in Ottawa, Canada. The lab mission is to advance Innodata technologies with the latest and most accurate algorithms and techniques from Artificial Intelligence and Machine Learning.</p>
+
+            <p>Established in May 2016 and led localy by David Nadeau, PhD. and a team of veteran technologists around the world, Innodata Labs is quickly growing and contributing to our success.</p>
+          </div>
+          <div class="grid_4">
+            <h3>
+              Credits
+            </h3>
+            <p>Original helicopter game by <a href="https://github.com/thegingerbloke/js-canvas-copter">Pete Goodman.</a></p>
+            <p>Adaptation to AI by Innodata Labs.</p>
+            <p>Helicopter image from <a href ="http://www.fileformat.info/info/emoji/helicopter/index.htm">FileFormat.info.</a></p>
+            <p>Background pattern from <a href="http://www.designbolts.com/2012/11/26/25-free-simple-black-seamless-patterns-for-website-backgrounds/">DesignBolts.</a></p>                
+          </div>
+        </div>
+        <center><img src="images/Innodata.png" width="150"/></center>
+      </div>
+    </section>
+
+
+
+  </main>
+
+  <!--========================================================
+                            FOOTER
+  =========================================================-->
+  <footer>
+
+    <section id="contacts" class="parallax parallax5" data-parallax-speed="-0.2">
+   
+      <div class="container center">
+        <div class="row">
+            <hr/>
+            <h2>contacts</h2>
+
+            <ul class="inline-list">
+              <li>
+                <a class="fa fa-twitter" href="https://twitter.com/Pythonner"></a>
+              </li>
+              <li>
+                <a class="fa fa-envelope" href="#"></a>
+              </li>
+            </ul>
+
+            <div id="google-map" class="map_model"></div>
+            <ul class="map_locations">
+              <li data-x="-75.744477" data-y="45.396243">
+                <p>Somewhere in Ottawa, Canada </p>
+              </li>
+            </ul>
+
+            <address>We are based in Ottawa, Canada</address>
+
+            <p class="copyright">
+              Innodata Labs © <span id="copyright-year"></span>.
+              <a href="privacy.html">Privacy Policy</a>
+            </p>
+        </div>
+      </div>
+    </section>
+  </footer>
+</div>
+
+<script src="js/script.js"></script>
+</body>
 </html>
