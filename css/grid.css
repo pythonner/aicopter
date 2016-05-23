@@ -183,6 +183,12 @@ table {
 .container .grid_4 {
   width: 370px;
 }
+.container .grid_4_yellow {
+  width: 366px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(255,153,0);
+}
 .container .grid_5 {
   width: 470px;
 }
