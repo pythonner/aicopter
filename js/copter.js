@@ -123,7 +123,7 @@ var jsCopter = {
         if (!this.container) return false;
 
         this.container.style.position = "relative";
-        this.container.style.margin = "2em";
+        //this.container.style.margin = "2em";
         this.setCanvasSize();
 
         // set the options
@@ -164,7 +164,15 @@ var jsCopter = {
     },
 
     setCanvasSize: function() {
-        this.options.canvas.width = Math.min(window.innerWidth - 80, 1000);
+        if (window.innerWidth > 600) {
+            this.options.canvas.width = Math.min(window.innerWidth - 200, 1000);
+        } else if (window.innerWidth > 400) {
+            this.options.canvas.width = window.innerWidth - 100;
+        } else if (window.innerWidth > 300) {
+            this.options.canvas.width = window.innerWidth - 50;
+        } else {
+            this.options.canvas.width = window.innerWidth - 25;
+        }
         this.options.canvas.height = Math.min(window.innerHeight - 20, 600);
         this.container.style.width = this.options.canvas.width+"px";
         this.container.style.height = this.options.canvas.height+"px";
