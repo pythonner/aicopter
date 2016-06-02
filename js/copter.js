@@ -751,7 +751,7 @@ var jsCopter = {
         this.endText.appendChild(document.createTextNode(message));
 
         var tweetThis = document.createElement("a");
-        tweetThis.setAttribute("href", "https://twitter.com/intent/tweet?text=" + message + "http://aicopter.com #machinelearning #ai");
+        tweetThis.setAttribute("href", "https://twitter.com/intent/tweet?text=" + message + " #machinelearning #ai");
         tweetThis.setAttribute("class", "twitter-share-button");
         tweetThis.setAttribute("id", "tweetButton");
         tweetThis.setAttribute("data-size", "large");
