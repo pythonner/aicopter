@@ -539,7 +539,7 @@ strong {
   color: #000;
 }
 .map_model {
-  height: 401px;
+  height: 301px;
 }
 .map_model img {
   max-width: none !important;
@@ -688,7 +688,7 @@ section:before {
 
 /*==================  Backgrounds  ======================*/
 /*==================     Icons     ======================*/
-.fa-facebook, .fa-twitter, .fa-envelope, .fa-skype, .fa-google-plus, .fa-instagram, .fa-vimeo-square {
+.fa-facebook, .fa-twitter, .fa-envelope, .fa-video-camera {
   width: 52px;
   height: 52px;
   line-height: 52px;
@@ -699,7 +699,7 @@ section:before {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
 }
-.fa-facebook:hover, .fa-twitter:hover, .fa-envelope:hover, .fa-skype:hover, .fa-google-plus:hover, .fa-instagram:hover, .fa-vimeo-square:hover {
+.fa-facebook:hover, .fa-twitter:hover, .fa-envelope:hover, .fa-video-camera:hover {
   background: #55615d;
   background: rgba(255, 255, 255, 0.2);
 }
