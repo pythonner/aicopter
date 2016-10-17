@@ -59,7 +59,7 @@ hr {
   margin: 0;
   border: none;
   height: 40px;
-  background: url("../images/hr.png") no-repeat center center;
+  background: url("../images/I-Logo-White.png") no-repeat center center;
 }
 
 p em {
@@ -458,7 +458,7 @@ strong {
 }
 
 .parallax1 {
-  background-image: url(../images/page-1_img02.jpg);
+  background-image: url(../images/undefined.jpg);
   padding: 244px 0 252px;
 }
 .parallax1__ins1 {
@@ -479,7 +479,7 @@ strong {
 }
 
 .parallax4 {
-  background-image: url(../images/page-1_img15.jpg);
+  background-image: url(../images/bg2.jpg);
   padding: 173px 0 173px;
 }
 
@@ -569,7 +569,7 @@ header {
 .coverrr {
   padding-top: 257px;
   padding-bottom: 276px;
-  background: url(../images/page-1_img01.jpg) no-repeat center center;
+  background: url(../images/bg1.jpg) no-repeat center center;
   -webkit-background-size: cover;
   background-size: cover;
 }
@@ -581,9 +581,22 @@ header {
 }
 
 /*==================     Brand     ======================*/
+
+.brand {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.brand_img {
+    height: auto; 
+    width: auto; 
+    min-width: 400px; 
+}
+
 .brand_name {
   overflow: hidden;
+  color: rgb(43,71,74);
 }
+
 img + .brand_name {
   margin-top: 25px;
 }
@@ -676,11 +689,14 @@ section:before {
 .image-wrap {
   max-width: 249px;
 }
-.center .image-wrap, .image-wrap.center {
+.image-wrap-small {
+  max-width: 149px;
+}
+.center .image-wrap, .image-wrap.center, .image-wrap-small {
   margin-left: auto;
   margin-right: auto;
 }
-.image-wrap, .image-wrap img, .image-wrap .lazy-img {
+.image-wrap, .image-wrap img, .image-wrap .lazy-img, .image-wrap-small img {
   border-radius: 50%;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -688,7 +704,7 @@ section:before {
 
 /*==================  Backgrounds  ======================*/
 /*==================     Icons     ======================*/
-.fa-facebook, .fa-twitter, .fa-envelope, .fa-video-camera {
+.fa-facebook, .fa-twitter, .fa-envelope, .fa-video-camera, .fa-rss {
   width: 52px;
   height: 52px;
   line-height: 52px;
@@ -699,7 +715,7 @@ section:before {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
 }
-.fa-facebook:hover, .fa-twitter:hover, .fa-envelope:hover, .fa-video-camera:hover {
+.fa-facebook:hover, .fa-twitter:hover, .fa-envelope:hover, .fa-video-camera:hover, .fa-rss:hover {
   background: #55615d;
   background: rgba(255, 255, 255, 0.2);
 }

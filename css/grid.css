@@ -183,11 +183,11 @@ table {
 .container .grid_4 {
   width: 370px;
 }
-.container .grid_4_yellow {
-  width: 366px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: rgb(255,153,0);
+.container .highlight {
+  background-color:rgba(43,71,74, 0.4);
+}
+.container .highlight_yellow {
+  background-color:rgba(255,153,0, 0.4);
 }
 .container .grid_5 {
   width: 470px;
