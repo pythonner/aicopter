@@ -595,6 +595,8 @@ header {
 .brand_name {
   overflow: hidden;
   color: rgb(43,71,74);
+  vertical-align: middle;
+  line-height: 52px;
 }
 
 img + .brand_name {
@@ -718,6 +720,22 @@ section:before {
 .fa-facebook:hover, .fa-twitter:hover, .fa-envelope:hover, .fa-video-camera:hover, .fa-rss:hover {
   background: #55615d;
   background: rgba(255, 255, 255, 0.2);
+}
+
+.fa-briefcase, .fa-code, .fa-rss-square {
+  width: 52px;
+  height: 52px;
+  line-height: 52px;
+  font-size: 23px;
+  text-align: center;
+  color: rgb(43,71,74);
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+.fa-briefcase:hover, .fa-code:hover, .fa-rss-square:hover {
+  background: #55615d;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /*==================    Buttons    ======================*/
