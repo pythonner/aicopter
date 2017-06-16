@@ -25,9 +25,9 @@
 
         defaults = {
             map: {
-                x: -75.744477,
-                y: 45.396243,
-                zoom: 12
+                x: 0,
+                y: 40,
+                zoom: 3
             },
             locations: []
         };
