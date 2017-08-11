@@ -63,7 +63,8 @@ search.addWidget(
   instantsearch.widgets.refinementList({
     container: '#organizations',
     attributeName: 'Host',
-    limit: 10,
+    limit: 6,
+    showMore: true,
     cssClasses: {
       list: 'nav nav-list',
       count: 'badge pull-right',
@@ -76,7 +77,8 @@ search.addWidget(
   instantsearch.widgets.refinementList({
     container: '#formats',
     attributeName: 'Format',
-    limit: 10,
+    limit: 6,
+    showMore: true,
     cssClasses: {
       list: 'nav nav-list',
       count: 'badge pull-right',
@@ -89,7 +91,8 @@ search.addWidget(
   instantsearch.widgets.refinementList({
     container: '#domains',
     attributeName: 'Domain',
-    limit: 10,
+    limit: 6,
+    showMore: true,
     cssClasses: {
       list: 'nav nav-list',
       count: 'badge pull-right',

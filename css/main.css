@@ -35,17 +35,23 @@ header {
   z-index: 2; }
   header .searchbox-container {
     margin-left: 240px;
-    max-width: 400px; }
+    max-width: 400px; 
+  }
     header .searchbox-container .input-group {
-      margin-top: 5px; }
+      margin-top: 5px; 
+    }
       header .searchbox-container .input-group .form-control:focus {
         outline: none;
-        box-shadow: none; }
+        box-shadow: none; 
+      }
       header .searchbox-container .input-group .input-group-btn button {
         padding-left: 20px;
         padding-right: 20px;
         background: #F8F8F8;
-        border-radius: 0; }
+        border-radius: 0; 
+      }
+
+
 
 section {
   background: #F1F1F1;
@@ -188,10 +194,18 @@ section {
     margin-top: 18px;
     margin-left: 30px; }
     section .thank-you a {
-      color: #CE1312; }
+      color: #167AC6; 
+    }
 
 .ais-search-box--input {
   padding-left: 14px; }
+
+.ais-show-more {
+  color: #167AC6;
+  font-weight: normal;
+  font-size: 12px;
+  padding-left: 8px;
+}
 
 .genre, .year, .description, .host {
   margin: 12px 0; }
@@ -203,3 +217,4 @@ section {
 
 .genre .badge {
   background: #BBBBBB; }
+
