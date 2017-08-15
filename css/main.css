@@ -58,11 +58,12 @@ section {
   min-height: 100%;
   z-index: 1; }
   section aside {
+    overflow: scroll;
     position: fixed;
     top: 70px;
     left: 0;
     bottom: 10px;
-    width: 230px;
+    width: 340px;
     background: #FFFFFF;
     border-right: 1px solid #E8E8E8; }
     section aside .nav {
@@ -146,7 +147,7 @@ section {
   section article {
     margin-top: 70px;
     margin-bottom: 10px;
-    margin-left: 237px;
+    margin-left: 347px;
     margin-right: 10px;
     padding: 10px 0;
     max-width: 100%;
