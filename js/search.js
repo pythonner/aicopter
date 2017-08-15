@@ -23,12 +23,12 @@ var hitTemplate =
   '<div class="hit media">' +
     '<div class="media-body">' +
       '<a href="{{{_highlightResult.Url.value}}}"><h4 class="media-heading">{{{_highlightResult.Name.value}}}</h4></a>' +
-      '<p class="description">{{_highlightResult.Description.value}}</p>'+
-      '<p class="year">From {{_highlightResult.Year from.value}} to {{_highlightResult.Year to.value}}, {{_highlightResult.Size (record).value}} records ({{_highlightResult.Size (Mb).value}} Mb)</p>'+
+      '<p class="description">{{{_highlightResult.Description.value}}}</p>'+
+      '<p class="year">From {{{_highlightResult.Year from.value}}} to {{{_highlightResult.Year to.value}}}, {{{_highlightResult.Size (record).value}}} records ({{{_highlightResult.Size (Mb).value}}} Mb)</p>'+
       '<p class="genre">'+
-          '<span class="badge">by: {{_highlightResult.Host.value}}</span>&nbsp;'+
-          '<span class="badge">{{_highlightResult.Format.value}}</span>&nbsp;'+
-          '<span class="badge">{{_highlightResult.Domain.value}}</span>&nbsp;'+
+          '<span class="badge">by: {{{_highlightResult.Host.value}}}</span>&nbsp;'+
+          '<span class="badge">{{{_highlightResult.Format.value}}}</span>&nbsp;'+
+          '<span class="badge">{{{_highlightResult.Domain.value}}}</span>&nbsp;'+
       '</p>' +
     '</div>' +
   '</div>';

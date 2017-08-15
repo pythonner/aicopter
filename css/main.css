@@ -177,8 +177,7 @@ section {
       border: 0px solid #F3F3F3; }
       section article .hit em {
         font-style: normal;
-        background: #FFFFD4;
-        text-decoration: underline; }
+        background: #FFFFD4;}
       section article .hit .media-object {
         height: 130px;
         width: 130px;
@@ -187,22 +186,26 @@ section {
         background-repeat: no-repeat;
         background-position: center center; }
       section article .hit .media-heading {
-        color: #167AC6;
+        color: #008cc4;
         font-weight: normal;
-        font-size: 18px; }
+        font-size: 20px; }
+      section article .hit .badge em {
+        font-style: normal;
+        color: #333333;
+        background: #FFFFD4;}        
   section .thank-you {
     font-size: .8em;
     margin-top: 18px;
     margin-left: 30px; }
     section .thank-you a {
-      color: #167AC6; 
+      color: #008cc4; 
     }
 
 .ais-search-box--input {
   padding-left: 14px; }
 
 .ais-show-more {
-  color: #167AC6;
+  color: #008cc4;
   font-weight: normal;
   font-size: 12px;
   padding-left: 8px;
@@ -212,10 +215,11 @@ section {
   margin: 12px 0; }
 
 .year, .host {
-  font-weight: bold; }
+  font-weight: bold;
+  font-style: italic; }
 
 .description {}
 
 .genre .badge {
-  background: #BBBBBB; }
+  background: #064163; }
 
