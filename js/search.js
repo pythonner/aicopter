@@ -22,7 +22,7 @@ search.addWidget(
 var hitTemplate =
   '<div class="hit media">' +
     '<div class="media-body">' +
-      '<a href="{{{_highlightResult.Url.value}}}"><h4 class="media-heading">{{{_highlightResult.Name.value}}}</h4></a>' +
+      '<a href="{{Url}}"><h4 class="media-heading">{{{_highlightResult.Name.value}}}</h4></a>' +
       '<p class="description">{{{_highlightResult.Description.value}}}</p>'+
       '<p class="year">From {{{_highlightResult.Year from.value}}} to {{{_highlightResult.Year to.value}}}, {{{_highlightResult.Size (record).value}}} records ({{{_highlightResult.Size (Mb).value}}} Mb)</p>'+
       '<p class="genre">'+
