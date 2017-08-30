@@ -28,7 +28,7 @@ var secretVariable = {
         {
             label1 : "Neural networks", 
             label2 : "Net neutrality", 
-            correct : "6b347be0e79381eeb5689396d9e59438"
+            correct : "078c32bd3030d95123ce8bf7c22515cd"
         },
         {
             label1 : "Survival kit", 
