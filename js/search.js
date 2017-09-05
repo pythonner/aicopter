@@ -3,7 +3,7 @@
 var search = instantsearch({
   appId: '3IMV4A54L6',
   apiKey: '14764fe83aec89f7335d3f2c85b21774',
-  indexName: 'open_data',
+  indexName: 'open_data_v3',
   urlSync: {}
 });
 
@@ -24,7 +24,6 @@ var hitTemplate =
     '<div class="media-body">' +
       '<a href="{{Url}}"><h4 class="media-heading">{{{_highlightResult.Name.value}}}</h4></a>' +
       '<p class="description">{{{_highlightResult.Description.value}}}</p>'+
-      '<p class="year">From {{{_highlightResult.Year from.value}}} to {{{_highlightResult.Year to.value}}}, {{{_highlightResult.Size (record).value}}} records ({{{_highlightResult.Size (Mb).value}}} Mb)</p>'+
       '<p class="genre">'+
           '<span class="badge">by: {{{_highlightResult.Host.value}}}</span>&nbsp;'+
           '<span class="badge">{{{_highlightResult.Format.value}}}</span>&nbsp;'+
@@ -39,7 +38,7 @@ var noResultsTemplate =
 search.addWidget(
   instantsearch.widgets.hits({
     container: '#hits',
-    hitsPerPage: 5,
+    hitsPerPage: 10,
     templates: {
       empty: noResultsTemplate,
       item: hitTemplate
@@ -59,10 +58,25 @@ search.addWidget(
 );
 
 search.addWidget(
+  instantsearch.widgets.rangeSlider({
+    container: '#sizemb',
+    attributeName: 'Size',
+    min: 0,
+    max: 100000,
+    step: 1000,
+    pips: false,
+    tooltips: {format: function(rawValue) {return parseInt(rawValue)}},
+    cssClasses: {
+      body: 'nav-narrow'
+    }    
+  })
+);
+
+search.addWidget(
   instantsearch.widgets.refinementList({
     container: '#organizations',
     attributeName: 'Host',
-    limit: 6,
+    limit: 5,
     showMore: true,
     cssClasses: {
       list: 'nav nav-list',
@@ -76,7 +90,7 @@ search.addWidget(
   instantsearch.widgets.refinementList({
     container: '#formats',
     attributeName: 'Format',
-    limit: 6,
+    limit: 5,
     showMore: true,
     cssClasses: {
       list: 'nav nav-list',
@@ -90,7 +104,7 @@ search.addWidget(
   instantsearch.widgets.refinementList({
     container: '#domains',
     attributeName: 'Domain',
-    limit: 6,
+    limit: 5,
     showMore: true,
     cssClasses: {
       list: 'nav nav-list',
