@@ -58,6 +58,7 @@ table {
 
 .nopopup {
   -webkit-touch-callout: none !important; 
+  -webkit-user-select: none !important;
 }
 
 /*===============   Fluid grid    ====================*/
