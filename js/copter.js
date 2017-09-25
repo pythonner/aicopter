@@ -192,8 +192,8 @@ var jsCopter = {
         canvas.id = canvasId;
         canvas.width = this.options.canvas.width;
         canvas.height = this.options.canvas.height;
+        canvas.setAttribute('class', 'nopopup');
 
-        // add the canvas into the page
         this.container.appendChild(canvas);
 
         return canvas;

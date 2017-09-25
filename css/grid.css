@@ -53,9 +53,11 @@ table {
   margin-left: auto;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -webkit-touch-callout: none !important; 
   box-sizing: border-box;
+}
 
+.nopopup {
+  -webkit-touch-callout: none !important; 
 }
 
 /*===============   Fluid grid    ====================*/
